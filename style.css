@@ -985,7 +985,7 @@ footer {
 
 /* Banner */
 .banner {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../cartorio.png');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('cartorio.png');
     background-size: cover;
     background-position: center;
     height: 400px;
