@@ -979,6 +979,8 @@ footer {
     }
 }
 
+}
+
 /* Responsividade para a logo */
 @media screen and (max-width: 768px) {
     .main-nav {
@@ -1084,5 +1086,232 @@ footer {
 
     .servico-card {
         min-height: 180px; /* Altura menor em mobile */
+    }
+}
+
+/* Responsividade Global */
+@media (min-width: 1400px) {
+    /* Estilos para telas muito grandes */
+    .cards-container,
+    .contact-info,
+    .footer-content {
+        max-width: 1320px;
+    }
+
+    .banner h1 {
+        font-size: 4em;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .cards-container,
+    .contact-info,
+    .footer-content {
+        max-width: 1140px;
+    }
+}
+
+/* Desktop menor/Laptop */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .cards-container,
+    .contact-info,
+    .footer-content {
+        max-width: 960px;
+    }
+
+    .banner {
+        height: 450px;
+        padding: 0 60px;
+    }
+
+    .banner h1 {
+        font-size: 3em;
+    }
+
+    .servico-card {
+        min-height: 220px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    .cards-container,
+    .contact-info,
+    .footer-content {
+        max-width: 720px;
+    }
+
+    .banner {
+        height: 400px;
+        padding: 0 40px;
+    }
+
+    .banner h1 {
+        font-size: 2.8em;
+        max-width: 600px;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .servico-card {
+        min-height: 200px;
+    }
+
+    /* Ajuste do menu para tablet */
+    .main-nav {
+        padding: 15px 30px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .logo img {
+        width: 160px;
+    }
+}
+
+/* Mobile Grande */
+@media (min-width: 576px) and (max-width: 767px) {
+    .cards-container,
+    .contact-info,
+    .footer-content {
+        max-width: 540px;
+    }
+
+    .banner {
+        height: 350px;
+        padding: 0 30px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .banner h1 {
+        font-size: 2.3em;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .banner p {
+        text-align: center;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .servico-card {
+        min-height: 180px;
+    }
+
+    /* Menu mobile */
+    .main-nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 8px 0;
+    }
+}
+
+/* Mobile Pequeno */
+@media (max-width: 575px) {
+    .banner {
+        height: 300px;
+        padding: 0 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .banner h1 {
+        font-size: 2em;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .banner p {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .servico-card {
+        min-height: 160px;
+    }
+
+    .card-content h3 {
+        font-size: 1.1em;
+    }
+
+    .card-content p {
+        font-size: 0.85em;
+    }
+
+    /* Ajustes do cabeçalho para mobile pequeno */
+    .top-header {
+        padding: 5px 0;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-info a,
+    .contact-info span {
+        font-size: 12px;
+    }
+
+    /* Menu mobile pequeno */
+    .main-nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 6px 0;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+/* Ajustes para dispositivos em modo paisagem */
+@media (max-height: 500px) and (orientation: landscape) {
+    .banner {
+        height: 100vh;
+    }
+
+    .servico-card {
+        min-height: 150px;
     }
 } 
