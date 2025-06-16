@@ -7,8 +7,8 @@
 
 /* Variáveis de cores */
 :root {
-    --primary-color: #002B5B;
-    --secondary-color: #DC1F27;
+    --primary-color: #f21d41; /* Cor do topo e roda pé */
+    --secondary-color: #71a8a3; /* Cor de 3 botões Webmail/Fale conosco e TABELIONATO DE NOTAS */
     --text-color: #333;
     --light-color: #fff;
     --gray-color: #f5f5f5;
@@ -56,12 +56,13 @@ body {
 /* Menu de navegação */
 .main-nav {
     background-color: var(--light-color);
-    padding: 15px 0;
+    padding: 15px 50px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
+    position: relative;
+    z-index: 100;
 }
 
 .logo {
@@ -70,7 +71,6 @@ body {
 }
 
 .logo img {
-    width: 180px; /* Tamanho base da logo */
     height: auto;
     display: block;
     transition: all 0.3s ease;
@@ -99,6 +99,55 @@ body {
 
 .nav-links a:hover {
     color: var(--secondary-color);
+}
+
+/* Responsividade do Menu */
+@media (max-width: 991px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        padding: 15px 20px;
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background: var(--light-color);
+        transition: right 0.3s ease-in-out;
+        z-index: 95;
+        display: block;
+    }
+
+    .nav-container.active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        height: 100%;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
 }
 
 /* Banner */
@@ -173,6 +222,47 @@ body {
     }
 }
 
+/* Estilos para o banner fino */
+.page-banner {
+    width: 100%;
+    height: 200px;
+    background-image: url('cartorio.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.page-banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Ajuste para o conteúdo principal após o banner */
+main {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* Seção de serviços */
 .servicos {
     padding: 60px 20px;
@@ -180,6 +270,14 @@ body {
 }
 
 .servicos h2 {
+    font-size: 2em;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.servicos h3 {
+    font-size: 1.5em;
     text-align: center;
     color: var(--primary-color);
     margin-bottom: 40px;
@@ -270,7 +368,7 @@ footer {
 
 /* Página de Serviços */
 .servicos-page {
-    max-width: 1200px;
+    max-width: 1500px; /* Tamanho dos containes */
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -469,19 +567,22 @@ footer {
 }
 
 .mapa {
-    margin-top: 60px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .mapa h2 {
-    text-align: center;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .mapa iframe {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* Responsividade para página de contato */
@@ -518,34 +619,58 @@ footer {
     font-size: 2.5em;
 }
 
-/* Seção História */
-.historia {
-    margin-bottom: 60px;
+/* Estilos para a seção principal */
+.sobre-page h1 {
+    margin-bottom: 60px; /* Aumenta o espaço entre "Sobre o Cartório" e "Nossa História" */
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2.8em;
 }
 
-.historia h2 {
+/* Estilos para a seção de história */
+.titulo-historia {
+    margin-bottom: 30px;  /* Espaço entre o título e o conteúdo */
     color: var(--primary-color);
-    margin-bottom: 30px;
-    font-size: 2em;
+    font-size: 3.2em; /* Aumenta o tamanho da fonte */
+    font-weight: 900; /* Deixa a fonte ainda mais grossa (extra-bold) */
+    text-transform: uppercase; /* Deixa em maiúsculas */
+    letter-spacing: 1px; /* Aumenta o espaçamento entre as letras */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Adiciona uma sombra suave para mais destaque */
+}
+
+.historia {
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
 .historia-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    display: flex;
+    flex-direction: row-reverse; /* Inverte a ordem: imagem primeiro, depois texto */
+    gap: 40px; /* Aumenta o espaço entre texto e imagem */
+    align-items: flex-start;
+}
+
+.historia-texto {
+    flex: 1;
+    line-height: 1.8; /* Aumenta um pouco o espaçamento entre linhas */
 }
 
 .historia-texto p {
     margin-bottom: 20px;
-    line-height: 1.8;
+    font-size: 1.1em; /* Aumenta um pouco o tamanho do texto */
+}
+
+.historia-imagem {
+    flex: 0 0 450px; /* Mantém a largura fixa da imagem */
 }
 
 .historia-imagem img {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px; /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona uma sombra suave */
+} 
 
 /* Seção Missão, Visão e Valores */
 .missao-valores {
@@ -998,23 +1123,20 @@ footer {
 
 /* Seção de cards de serviços principais */
 .servicos-cards {
-    /* Posicionamento relativo ao banner */
     position: relative;
-    margin-top: -50px; /* Sobrepõe ligeiramente o banner */
+    margin-top: -50px;
     padding: 0 20px;
     z-index: 2;
 }
 
-/* Container que mantém os cards alinhados */
 .cards-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas de tamanho igual */
-    gap: 20px; /* Espaçamento entre os cards */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-/* Estilo base para todos os cards de serviço */
 .servico-card {
     border-radius: 5px;
     min-height: 200px;
@@ -1027,12 +1149,10 @@ footer {
     cursor: pointer;
 }
 
-/* Efeito hover nos cards */
 .servico-card:hover {
     transform: translateY(-5px);
 }
 
-/* Variantes de cor para os cards */
 .card-azul {
     background-color: var(--primary-color);
 }
@@ -1041,49 +1161,92 @@ footer {
     background-color: var(--secondary-color);
 }
 
-/* Conteúdo dentro dos cards */
 .card-content {
     text-align: center;
 }
 
-/* Ícones dos cards */
 .card-content i {
     font-size: 2.5em;
     margin-bottom: 15px;
 }
 
-/* Títulos dos cards */
 .card-content h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-/* Texto dos cards */
 .card-content p {
     font-size: 0.9em;
     opacity: 0.9;
 }
 
-/* Responsividade dos cards */
+/* Responsividade */
 @media (max-width: 1024px) {
     .cards-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info > * {
+        margin: 5px 0;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
     .servicos-cards {
-        margin-top: 0; /* Remove a sobreposição em mobile */
+        margin-top: 0;
         padding: 20px;
     }
 
     .cards-container {
-        grid-template-columns: 1fr; /* 1 coluna em mobile */
+        grid-template-columns: 1fr;
     }
 
     .servico-card {
-        min-height: 180px; /* Altura menor em mobile */
+        min-height: 180px;
+    }
+}
+
+/* Tamanho da logo no Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    .logo img {
+        width: 160px;
+    }
+}
+
+/* Tamanho da logo no Desktop */
+@media (min-width: 992px) {
+    .logo img {
+        width: 220px;
     }
 }
 
@@ -1312,5 +1475,310 @@ footer {
     .servico-card {
         min-height: 150px;
     }
-} 
+}
 
+/* Seção de informações do cartório */
+.cartorio-info {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.cartorio-info h2 {
+    color: var(--primary-color);
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cartorio-info h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    text-align: center;
+    margin: 40px 0 30px;
+}
+
+.cartorio-info > p {
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.servico-box {
+    background: var(--light-color);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servico-box:hover {
+    transform: translateY(-5px);
+}
+
+.servico-box i {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.servico-box h4 {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.servico-box p {
+    color: var(--text-color);
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* Links Úteis Section */
+.links-uteis-section {
+    background-color: var(--gray-color);
+    padding: 60px 20px;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.links-uteis-section h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.links-uteis-section p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.botoes-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.botoes-container a {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.botoes-container a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .botoes-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cartorio-info h2 {
+        font-size: 1.8em;
+    }
+
+    .cartorio-info h3 {
+        font-size: 1.3em;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .servico-box {
+        padding: 20px;
+    }
+
+    .servico-box i {
+        font-size: 2em;
+    }
+
+    .servico-box h4 {
+        font-size: 1.1em;
+    }
+
+    .links-uteis-section h3 {
+        font-size: 1.5em;
+    }
+
+    .links-uteis-section p {
+        font-size: 1em;
+    }
+
+    .botoes-container {
+        gap: 15px;
+    }
+
+    .botoes-container a {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* Seção de Missão, Visão e Valores */
+.missao-visao-valores {
+    background-color: var(--gray-color);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.missao-visao-valores h2 {
+    color: var(--primary-color);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.missao-visao-valores > p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.mvv-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.mvv-item {
+    background: var(--light-color);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mvv-item h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.mvv-item p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Links Úteis */
+.links-uteis {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--gray-color);
+    border-radius: 5px;
+}
+
+.links-uteis h3 {
+    margin-bottom: 20px;
+}
+
+.links-uteis p {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.botoes-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 15px 20px;
+    background: var(--primary-color);
+    color: var(--light-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+    background: var(--secondary-color);
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mvv-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cartorio-info h2 {
+        font-size: 1.8em;
+    }
+
+    .cartorio-info h3 {
+        font-size: 1.3em;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mvv-container {
+        grid-template-columns: 1fr;
+    }
+
+    .botoes-links {
+        grid-template-columns: 1fr;
+    }
+
+    .servico-box {
+        padding: 20px;
+    }
+
+    .servico-box i {
+        font-size: 2em;
+    }
+
+    .servico-box h4 {
+        font-size: 1.1em;
+    }
+} 
